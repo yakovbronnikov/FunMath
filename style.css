@@ -9,36 +9,41 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Indie Flower', cursive;
+  color: #0F255C;
 }
 
 body {
-  background: #f2f2f2;
-  height: 100vh;
+  /* background: #f2f2f2; */
+  background-image: url(img/pattern.svg);
+  background-repeat: repeat;
 }
 
+
 .level_container {
+  display: grid;
+  grid-row-gap: 32px;
   width: min(var(--main-width), 360px);
   margin: 24px auto;
   background: #fff;
   padding: 24px;
-  border-radius: 8px;
-  box-shadow: 0px 16px 48px rgba(0,0,0,.05);
+  border-radius: 12px;
+  box-shadow: 0px 16px 32px rgba(0,0,0,.1);
+  border: solid 4px #FAFAFA;
 }
 
 #my_dialog {
   text-align: center;
   width: min(var(--main-width), 500px);
-  box-shadow: 0px 16px 48px rgba(0,0,0,.05);
-  border-radius: 8px;
+  box-shadow: 0px 16px 32px rgba(0,0,0,.1);
+  border-radius: 12px;
   margin: auto;
-  border: none;
+  border: solid 4px #FAFAFA;
   padding-top: 24px;
 }
 
 #my_dialog * {
   margin-bottom: 24px;
 }
-
 
 
 .level_header {
@@ -55,6 +60,12 @@ body {
   border: none;
 }
 
+#my_dialog .emoji_button {
+  font-size: 40px;
+  margin: 8px;
+}
+
+
 #time_count {
   color: #BFBFBF;
 }
@@ -67,9 +78,10 @@ body {
 
 .task_form {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-row-gap: 16px;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   justify-items: center;
 }
 
@@ -78,7 +90,7 @@ body {
 }
 
 .task_form span, #task {
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 400;
   text-align: center;
   border: none;
@@ -107,6 +119,11 @@ body {
   color: #E5E5E5;
 }
 
+
+
+
+/* Numpad styles */
+
 .numpad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -117,8 +134,8 @@ body {
 .numpad_key {
   width: 100%;
   height: 80px;
-  font-size: 20px;
-  background: linear-gradient(135deg, #FAFAFA 0%, #F2F2F2 100%);
+  font-size: 24px;
+  background: linear-gradient(135.84deg, #F6FDFF -1.51%, #E5EEFF 100%);
   border: none;
   text-align: center;
   display: flex;
@@ -128,10 +145,11 @@ body {
   transition: background .2s, box-shadow .2s ;
   overflow: hidden;
   position: relative;
+  box-shadow: 1px 4px 2px rgba(0,0,100,.1);
 }
 
 .numpad_key:hover {
-  background: linear-gradient(135deg, #F2F2F2 0%, #E5E5E5 100%);
+  background: linear-gradient(135.84deg, #F6FDFF -1.51%, #EFFBFF -1.51%, #C3D7FF 100%);
 }
 
 .numpad_key_pressed {
@@ -142,6 +160,9 @@ body {
 
 .numpad_action_key {}
 
+
+
+/* Level animations */
 
 
 .level_success_animation {

@@ -11,6 +11,7 @@
 <body>
 
   <div class="level_container" id="level_container">
+
     <div class="level_header">
       <div class="emoji_button">
         <span>⏱</span>
@@ -19,42 +20,49 @@
       <input type="checkbox" id="pause" onchange="pauseState()" checked>
       <label for="pause" class="emoji_button">⏸</label>
     </div>
+
     <div class="task_form">
       <input type="text" id="task" readonly>
       <span>=</span>
       <input type="text" id="solution" placeholder="How much?" readonly>
-      <div class="numpad">
-        <button class="numpad_key" onclick='numpadKeyClick(1)'>1</button>
-        <button class="numpad_key" onclick='numpadKeyClick(2)'>2</button>
-        <button class="numpad_key" onclick='numpadKeyClick(3)'>3</button>
-        <button class="numpad_key" onclick='numpadKeyClick(4)'>4</button>
-        <button class="numpad_key" onclick='numpadKeyClick(5)'>5</button>
-        <button class="numpad_key" onclick='numpadKeyClick(6)'>6</button>
-        <button class="numpad_key" onclick='numpadKeyClick(7)'>7</button>
-        <button class="numpad_key" onclick='numpadKeyClick(8)'>8</button>
-        <button class="numpad_key" onclick='numpadKeyClick(9)'>9</button>
-        <button class="numpad_key" onclick='solutionClear()'>🆑</button>
-        <button class="numpad_key numpad_action_key" onclick='numpadKeyClick(0)'>0</button>
-        <button class="numpad_key numpad_action_key" onclick='resultCheck()'>☑️</button>
-      </div>
+    </div>
+
+    <div class="numpad">
+      <button class="numpad_key" onclick='numpadKeyClick(1)'>1</button>
+      <button class="numpad_key" onclick='numpadKeyClick(2)'>2</button>
+      <button class="numpad_key" onclick='numpadKeyClick(3)'>3</button>
+      <button class="numpad_key" onclick='numpadKeyClick(4)'>4</button>
+      <button class="numpad_key" onclick='numpadKeyClick(5)'>5</button>
+      <button class="numpad_key" onclick='numpadKeyClick(6)'>6</button>
+      <button class="numpad_key" onclick='numpadKeyClick(7)'>7</button>
+      <button class="numpad_key" onclick='numpadKeyClick(8)'>8</button>
+      <button class="numpad_key" onclick='numpadKeyClick(9)'>9</button>
+      <button class="numpad_key" onclick='solutionClear()'>🆑</button>
+      <button class="numpad_key numpad_action_key" onclick='numpadKeyClick(0)'>0</button>
+      <button class="numpad_key numpad_action_key" onclick='resultCheck()'>☑️</button>
     </div>
   </div>
 
   <dialog id="my_dialog">
     <h1 id="dialog_title">Game paused...</h1>
+
     <div class="score">
       <span>Right answers:</span>
       <span id='score_count'>0</span>
       <span>of</span>
       <span id='task_count'>0</span>
     </div>
+
     <div>
       <span>Left time:</span>
       <span id="dialog_time">0</span>
       <span>s</span>
     </div>
+
     <button onclick="continueGame()" id="continue_button" class="emoji_button">▶️</button>
+
     <button onclick="restartGame()" class="emoji_button">🔄</button>
+
   </dialog>
 
   <script type="text/javascript" src="main.js"></script>
