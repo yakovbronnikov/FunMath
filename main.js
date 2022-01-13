@@ -1,15 +1,50 @@
+// Audio settings
+
+function audioActions(audio, action){
+  if(action == 'play') {
+    audio.play()
+  } else if(action == 'pause') {
+    audio.pause()
+  } else if(action == 'load') {
+    audio.load()
+    audio.play()
+  }
+}
+
+
+
+
 // Timer and raund settings
 let pause = document.getElementById('pause')
 let gameDialog = document.getElementById('my_dialog')
 let myResult = 0
 let scoreCount = document.getElementById('score_count')
 let taskCount = document.getElementById('task_count')
+let dialogTime = document.getElementById('dialog_time')
+
+
+let mainAudio = document.getElementById('level_main')
+let dialogAudio = document.getElementById('dialog_audio')
+let numpadAudio = document.getElementById('numpad_audio')
+let clearAudio = document.getElementById('clear_audio')
+let errorAudio = document.getElementById('error_audio')
+let successAudio = document.getElementById('success_audio')
+
+mainAudio.volume = .1
+dialogAudio.volume = .2
+numpadAudio.volume = .2
+clearAudio.volume = .2
+errorAudio.volume = .2
+successAudio.volume = .6
+
 
 
 function pauseState() {
   if(gameDialog.open == false){
+    audioActions(dialogAudio, 'play')
     pause.checked = false
     gameDialog.showModal()
+    audioActions(mainAudio, 'pause')
   }
 }
 
@@ -17,23 +52,16 @@ function pauseState() {
 let myTimer = setInterval(
   function myTimerFunc(){
     let timeValue = Number(document.getElementById('time_count').innerText)
-    let dialogTime = document.getElementById('dialog_time')
     dialogTime.innerText = timeValue
     if(timeValue > 0 && pause.checked == true){
       document.getElementById('time_count').innerText = timeValue - 1
     } else {
-      let dialogTitle = document.getElementById('dialog_title')
-      let continueButton = document.getElementById('continue_button')
       if(timeValue == 0 && pause.checked == true){
-        dialogTitle.innerText = "Time's up!"
-        continueButton.style.display = 'none'
-        dialogTime.parentElement.style.display = 'none'
+        dialogAction('end')
         resultCheck()
         pauseState()
-      } else if(timeValue > 0){
-        dialogTitle.innerText = 'Game paused...'
-        continueButton.style.display = ''
-        dialogTime.parentElement.style.display = ''
+      } else if(timeValue > 0 && timeValue < 60){
+        dialogAction('pause')
       }
     }
   },
@@ -42,8 +70,10 @@ let myTimer = setInterval(
 
 
 function continueGame(){
+  audioActions(dialogAudio, 'play')
   pause.checked = true
   gameDialog.close()
+  audioActions(mainAudio, 'play')
 }
 
 function restartGame(){
@@ -53,8 +83,34 @@ function restartGame(){
   document.getElementById('time_count').innerText = 60
   scoreCount.innerText = 0
   taskCount.innerText = 0
+  audioActions(mainAudio, 'load')
 }
 
+
+function dialogAction(action){
+  let dialogTitle = document.getElementById('dialog_title')
+  let continueButton = document.getElementById('continue_button')
+  let welcome = document.getElementById('welcome')
+  if (action == 'start'){
+    dialogTitle.innerText = 'Hello my friend!'
+    continueButton.style.display = ''
+    welcome.style.display = ''
+    dialogTime.parentElement.style.display = 'none'
+    scoreCount.parentElement.style.display = 'none'
+  } else if(action == 'pause'){
+    dialogTitle.innerText = 'Game paused...'
+    continueButton.style.display = ''
+    dialogTime.parentElement.style.display = ''
+    welcome.style.display = 'none'
+    scoreCount.parentElement.style.display = ''
+  } else if(action == 'end'){
+    dialogTitle.innerText = "Time's up!"
+    continueButton.style.display = 'none'
+    welcome.style.display = 'none'
+    dialogTime.parentElement.style.display = 'none'
+    scoreCount.parentElement.style.display = ''
+  }
+}
 
 // Numpad settings
 
@@ -71,8 +127,13 @@ function numpadKeyUp(event) {this.classList.remove('numpad_key_pressed')}
 
 function numpadKeyClick(number){
   let input = document.getElementById('solution')
-  if (number != 'C'){
+  if (number != 10){
     input.value += String(number)
+    numpadAudio.src = "audio/numpad_audio_"+randomNumber(1, 4)+".mp3"
+    audioActions(numpadAudio, 'play')
+  } else {
+    audioActions(clearAudio, 'play')
+    solutionClear()
   }
 }
 
@@ -135,23 +196,26 @@ function taskRandom(){
   return myResult
 }
 
-taskRandom()
-
 
 // Checking result
 
 function resultCheck() {
   let userResult = document.getElementById('solution').value
+  let container = document.getElementById('level_container')
   taskCount.innerText = Number(taskCount.innerText) + 1
+  setTimeout(() => {container.classList.remove('level_failure_animation')}, 300)
   if (userResult == myResult) {
     scoreCount.innerText = Number(scoreCount.innerText)  + 1
     taskRandom()
     solutionClear()
-    resultAnimation(true)
+    addReaction('👍')
+    audioActions(successAudio, 'play')
   } else {
+    container.classList.add('level_failure_animation')
     taskRandom()
     solutionClear()
-    resultAnimation(false)
+    addReaction('🥴')
+    audioActions(errorAudio, 'play')
   }
 }
 
@@ -160,15 +224,37 @@ function solutionClear() {
   document.getElementById('solution').value = ''
 }
 
-function resultAnimation(result) {
-  let container = document.getElementById('level_container')
-  if(result == true){
-    container.classList.add('level_success_animation')
-  } else {
-    container.classList.add('level_failure_animation')
-  }
+
+
+// Reactions!!!
+
+
+function resultReaction(reaction){
+  reaction.style.transform =
+    "translateY(-"+ String(randomNumber(40, 240)) +"px)" +
+    "scale(" + String(randomNumber(1, 3)) + "." + String(randomNumber(1, 100)) +")"
+  reaction.style.opacity = "1"
   setTimeout(() => {
-    container.classList.remove('level_success_animation')
-    container.classList.remove('level_failure_animation')
-  }, 1000)
+    reaction.style.opacity = "0"
+  }, 400)
+  setTimeout(() => {
+    reaction.style.transform = "none"
+  }, 900)
 }
+
+function addReaction(emoji){
+  let reactions = document.querySelectorAll(".reaction")
+  for (let i = 0; i < reactions.length; i++) {
+    const reaction = reactions[i]
+    reaction.innerText = emoji
+    resultReaction(reaction)
+  }
+}
+
+
+
+// Call basic functions
+
+taskRandom()
+dialogAction('start')
+pauseState()
