@@ -29,13 +29,15 @@ let numpadAudio = document.getElementById('numpad_audio')
 let clearAudio = document.getElementById('clear_audio')
 let errorAudio = document.getElementById('error_audio')
 let successAudio = document.getElementById('success_audio')
+let endAudio = document.getElementById('end_audio')
 
 mainAudio.volume = .1
 dialogAudio.volume = .2
 numpadAudio.volume = .2
 clearAudio.volume = .2
-errorAudio.volume = .2
-successAudio.volume = .6
+errorAudio.volume = .15
+successAudio.volume = .2
+endAudio.volume = .2
 
 
 
@@ -57,8 +59,8 @@ let myTimer = setInterval(
       document.getElementById('time_count').innerText = timeValue - 1
     } else {
       if(timeValue == 0 && pause.checked == true){
+        audioActions(endAudio, 'play')
         dialogAction('end')
-        resultCheck()
         pauseState()
       } else if(timeValue > 0 && timeValue < 60){
         dialogAction('pause')
@@ -128,9 +130,9 @@ function numpadKeyUp(event) {this.classList.remove('numpad_key_pressed')}
 function numpadKeyClick(number){
   let input = document.getElementById('solution')
   if (number != 10){
+    audioActions(numpadAudio, 'play')
     input.value += String(number)
     numpadAudio.src = "audio/numpad_audio_"+randomNumber(1, 4)+".mp3"
-    audioActions(numpadAudio, 'play')
   } else {
     audioActions(clearAudio, 'play')
     solutionClear()
@@ -205,17 +207,17 @@ function resultCheck() {
   taskCount.innerText = Number(taskCount.innerText) + 1
   setTimeout(() => {container.classList.remove('level_failure_animation')}, 300)
   if (userResult == myResult) {
+    audioActions(successAudio, 'play')
     scoreCount.innerText = Number(scoreCount.innerText)  + 1
     taskRandom()
     solutionClear()
     addReaction('👍')
-    audioActions(successAudio, 'play')
   } else {
+    audioActions(errorAudio, 'play')
     container.classList.add('level_failure_animation')
     taskRandom()
     solutionClear()
     addReaction('🥴')
-    audioActions(errorAudio, 'play')
   }
 }
 
@@ -231,7 +233,7 @@ function solutionClear() {
 
 function resultReaction(reaction){
   reaction.style.transform =
-    "translateY(-"+ String(randomNumber(40, 240)) +"px)" +
+    "translateY(-"+ String(randomNumber(40, 300)) +"px)" +
     "scale(" + String(randomNumber(1, 3)) + "." + String(randomNumber(1, 100)) +")"
   reaction.style.opacity = "1"
   setTimeout(() => {
