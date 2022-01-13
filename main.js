@@ -130,9 +130,9 @@ function numpadKeyUp(event) {this.classList.remove('numpad_key_pressed')}
 function numpadKeyClick(number){
   let input = document.getElementById('solution')
   if (number != 10){
+    numpadAudio.src = "audio/numpad_audio_"+randomNumber(1, 4)+".mp3"
     audioActions(numpadAudio, 'play')
     input.value += String(number)
-    numpadAudio.src = "audio/numpad_audio_"+randomNumber(1, 4)+".mp3"
   } else {
     audioActions(clearAudio, 'play')
     solutionClear()
