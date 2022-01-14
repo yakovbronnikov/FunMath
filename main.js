@@ -1,3 +1,11 @@
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js')
+    .then(() => navigator.serviceWorker.ready.then((worker) => {
+      worker.sync.register('syncdata');
+    }))
+    .catch((err) => console.log(err));
+};
+
 // Audio settings
 
 function audioActions(audio, action){
@@ -181,17 +189,17 @@ function taskRandom(){
   let x = ''
   let y = ''
   if (operator == ' + ') {
-    x = randomNumber(1, 100)
-    y = randomNumber(1, 100)
+    x = randomNumber(2, 100)
+    y = randomNumber(2, 100)
   } else if (operator == ' - ') {
-    x = randomNumber(1, 100)
-    y = randomNumber(1, x)
+    x = randomNumber(2, 100)
+    y = randomNumber(2, x)
   } else if (operator == ' * ') {
-    x = randomNumber(1, 30)
-    y = randomNumber(1, 10)
+    x = randomNumber(2, 30)
+    y = randomNumber(2, 10)
   } else {
-    x = randomNumber(1, 10)
-    y = randomNumber(1, 10)
+    x = randomNumber(2, 30)
+    y = randomNumber(2, 10)
     x = x * y
   }
   myResult = levelMath(x,y,operator)
