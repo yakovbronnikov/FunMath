@@ -39,6 +39,15 @@ let errorAudio = document.getElementById('error_audio')
 let successAudio = document.getElementById('success_audio')
 let endAudio = document.getElementById('end_audio')
 
+let levelFrom = 0
+let levelTo = 0
+
+function levelChoice(from, to) {
+  levelFrom = from
+  levelTo = to
+  return levelFrom, levelTo
+}
+
 mainAudio.volume = .1
 dialogAudio.volume = .2
 numpadAudio.volume = .2
@@ -102,10 +111,12 @@ function dialogAction(action){
   let continueButton = document.getElementById('continue_button')
   let restartButton = document.getElementById('restart_button')
   let welcome = document.getElementById('welcome')
+  let levelsGroup = document.getElementById('levels_group')
   if (action == 'start'){
     dialogTitle.innerText = 'Hello my friend!'
     continueButton.innerText = "Let's go!"
-    continueButton.style.display = ''
+    continueButton.style.display = 'none'
+    levelsGroup.style.display = ''
     welcome.style.display = ''
     dialogTime.parentElement.style.display = 'none'
     scoreCount.parentElement.style.display = 'none'
@@ -118,6 +129,7 @@ function dialogAction(action){
     welcome.style.display = 'none'
     scoreCount.parentElement.style.display = ''
     restartButton.style.display = ''
+    levelsGroup.style.display = 'none'
   } else if(action == 'end'){
     dialogTitle.innerText = "Time's up!"
     continueButton.innerText = "Continue"
@@ -126,6 +138,7 @@ function dialogAction(action){
     dialogTime.parentElement.style.display = 'none'
     scoreCount.parentElement.style.display = ''
     restartButton.style.display = ''
+    levelsGroup.style.display = 'none'
   }
 }
 
@@ -192,7 +205,7 @@ function levelMath(x,y,operator) {
 
 function taskRandom(){
   const operators = [' + ',' - ',' * ',' / ']
-  let operator = operators[randomNumber(0,3)]
+  let operator = operators[randomNumber(levelFrom, levelTo)]
   let x = ''
   let y = ''
   if (operator == ' + ') {
@@ -272,6 +285,6 @@ function addReaction(emoji){
 
 // Call basic functions
 
-taskRandom()
+
 dialogAction('start')
 pauseState()

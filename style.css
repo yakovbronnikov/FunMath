@@ -11,6 +11,7 @@
   box-sizing: border-box;
   font-family: 'Indie Flower', cursive;
   color: #fff;
+  outline: none;
 }
 
 #my_dialog span,
@@ -216,6 +217,33 @@ dialog::backdrop {
   box-shadow: inset 0px 4px 0px #000000;
 }
 
+.levels {
+  width: 100%;
+  display: grid;
+  grid-row-gap: 24px;
+  margin-bottom: 40px;
+}
+
+.levels  .numpad_key {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.levels h3 {
+  font-weight: 400;
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.levels p {
+  font-size: 14px;
+}
+
 
 
 
@@ -246,9 +274,18 @@ dialog::backdrop {
   display: flex;
   justify-content: space-around;
   position: absolute;
-  bottom: -40px;
-  width: 100vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   text-align: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+.reactions_block,
+.reaction {
+  pointer-events: none;
 }
 
 .reaction {
