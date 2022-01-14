@@ -1,8 +1,8 @@
-const CACHE = 'cache-and-update-v1';
+const cacheName = 'funmath-v1';
 // При установке воркера мы должны закешировать часть данных (статику).
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open(CACHE).then((cache) => cache.addAll([
+        caches.open(cacheName).then((cache) => cache.addAll([
                 'style.css',
                 'audio/level_main.mp3',
                 'audio/dialog_audio.mp3',
@@ -25,14 +25,14 @@ self.addEventListener('fetch', function(event) {
 });
 
 function fromCache(request) {
-    return caches.open(CACHE).then((cache) =>
+    return caches.open(cacheName).then((cache) =>
         cache.match(request).then((matching) =>
             matching || Promise.reject('no-match')
         ));
 }
 
 function update(request) {
-    return caches.open(CACHE).then((cache) =>
+    return caches.open(cacheName).then((cache) =>
         fetch(request).then((response) =>
             cache.put(request, response)
         )
