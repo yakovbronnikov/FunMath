@@ -100,25 +100,32 @@ function restartGame(){
 function dialogAction(action){
   let dialogTitle = document.getElementById('dialog_title')
   let continueButton = document.getElementById('continue_button')
+  let restartButton = document.getElementById('restart_button')
   let welcome = document.getElementById('welcome')
   if (action == 'start'){
     dialogTitle.innerText = 'Hello my friend!'
+    continueButton.innerText = "Let's go!"
     continueButton.style.display = ''
     welcome.style.display = ''
     dialogTime.parentElement.style.display = 'none'
     scoreCount.parentElement.style.display = 'none'
+    restartButton.style.display = 'none'
   } else if(action == 'pause'){
     dialogTitle.innerText = 'Game paused...'
+    continueButton.innerText = "Continue"
     continueButton.style.display = ''
     dialogTime.parentElement.style.display = ''
     welcome.style.display = 'none'
     scoreCount.parentElement.style.display = ''
+    restartButton.style.display = ''
   } else if(action == 'end'){
     dialogTitle.innerText = "Time's up!"
+    continueButton.innerText = "Continue"
     continueButton.style.display = 'none'
     welcome.style.display = 'none'
     dialogTime.parentElement.style.display = 'none'
     scoreCount.parentElement.style.display = ''
+    restartButton.style.display = ''
   }
 }
 

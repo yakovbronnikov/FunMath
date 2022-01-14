@@ -32,8 +32,8 @@ body {
   align-items: center;
 }
 
-a {opacity: .3;}
-a:hover {opacity: .5;}
+a {opacity: .5;}
+a:hover {opacity: 1; color: #FFCD4D;}
 
 
 .level_container {
