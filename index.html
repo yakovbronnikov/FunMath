@@ -60,41 +60,55 @@
   </div>
 
   <dialog id="my_dialog">
-    <h1 id="dialog_title">Game paused...</h1>
-    <div class="dialog_info">
-      <p id="welcome">This is a FunMath game. Here you need to solve mathematical expressions in your mind! To get started, choose your difficulty level:</p>
+    <div class="dialog_content" id="dialog_pause">
+      <h1>Game paused...</h1>
+      <div class="dialog_button_group">
+        <button onclick="continueGame()" id="continue_button" class="numpad_action_key">Continue</button>
+        <button onclick="restartGame()" id="restart_button" class="numpad_key">Restart</button>
+      </div>
+    </div>
+    <div class="dialog_content" id="dialog_end">
+      <h1>Time's up!</h1>
       <div class="score">
         <span>Right answers:</span>
         <span id='score_count'>0</span>
         <span>of</span>
         <span id='task_count'>0</span>
       </div>
-      <div>
-        <span>Left time:</span>
-        <span id="dialog_time">0</span>
-        <span>s</span>
+      <div class="levels">
+        <button class="numpad_key" onclick='continueGame(); levelChoice(0, 1); taskRandom(); restartGame();'>
+          <h3>Easy 🐥</h3>
+          <p>Sum & Subtract</p>
+        </button>
+        <button class="numpad_key" onclick='continueGame(); levelChoice(2, 3); taskRandom(); restartGame();'>
+          <h3>Medium 😎</h3>
+          <p>Multiply & Division</p>
+        </button>
+        <button class="numpad_key" onclick='continueGame(); levelChoice(0, 3); taskRandom(); restartGame();'>
+          <h3>Hard 🔥</h3>
+          <p>Mixed level</p>
+        </button>
       </div>
     </div>
-    <div class="dialog_button_group">
-      <button onclick="continueGame()" id="continue_button" class="numpad_action_key">Continue</button>
-      <button onclick="restartGame()" id="restart_button" class="numpad_key">Restart</button>
-    </div>
-    <div class="levels" id="levels_group">
-      <button class="numpad_key" onclick='continueGame(); levelChoice(0, 1); taskRandom();'>
-        <h3>Easy 🐥</h3>
-        <p>Sum & Subtract</p>
-      </button>
-      <button class="numpad_key" onclick='continueGame(); levelChoice(2, 3); taskRandom();'>
-        <h3>Medium 😎</h3>
-        <p>Multiply & Division</p>
-      </button>
-      <button class="numpad_key" onclick='continueGame(); levelChoice(0, 3); taskRandom();'>
-        <h3>Hard 🔥</h3>
-        <p>Mixed level</p>
-      </button>
+    <div class="dialog_content" id="dialog_start">
+      <h1>Hello my friend!</h1>
+      <p id="welcome">This is a FunMath game. Here you need to solve mathematical expressions in your mind! To get started, choose your difficulty level:</p>
+      <div class="levels">
+        <button class="numpad_key" onclick='continueGame(); levelChoice(0, 1); taskRandom();'>
+          <h3>Easy 🐥</h3>
+          <p>Sum & Subtract</p>
+        </button>
+        <button class="numpad_key" onclick='continueGame(); levelChoice(2, 3); taskRandom();'>
+          <h3>Medium 😎</h3>
+          <p>Multiply & Division</p>
+        </button>
+        <button class="numpad_key" onclick='continueGame(); levelChoice(0, 3); taskRandom();'>
+          <h3>Hard 🔥</h3>
+          <p>Mixed level</p>
+        </button>
+      </div>
     </div>
     <a href="https://www.instagram.com/yakov_ux/" target="_blank" rel="noopener">My instagram</a>
-
   </dialog>
 
 

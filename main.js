@@ -71,7 +71,6 @@ function pauseState() {
 let myTimer = setInterval(
   function myTimerFunc(){
     let timeValue = Number(document.getElementById('time_count').innerText)
-    dialogTime.innerText = timeValue
     if(timeValue > 0 && pause.checked == true){
       document.getElementById('time_count').innerText = timeValue - 1
     } else {
@@ -107,38 +106,21 @@ function restartGame(){
 
 
 function dialogAction(action){
-  let dialogTitle = document.getElementById('dialog_title')
-  let continueButton = document.getElementById('continue_button')
-  let restartButton = document.getElementById('restart_button')
-  let welcome = document.getElementById('welcome')
-  let levelsGroup = document.getElementById('levels_group')
+  let dialogPause = document.getElementById('dialog_pause')
+  let dialogEnd = document.getElementById('dialog_end')
+  let dialogStart = document.getElementById('dialog_start')
   if (action == 'start'){
-    dialogTitle.innerText = 'Hello my friend!'
-    continueButton.innerText = "Let's go!"
-    continueButton.style.display = 'none'
-    levelsGroup.style.display = ''
-    welcome.style.display = ''
-    dialogTime.parentElement.style.display = 'none'
-    scoreCount.parentElement.style.display = 'none'
-    restartButton.style.display = 'none'
+    dialogPause.style.display = 'none'
+    dialogEnd.style.display = 'none'
+    dialogStart.style.display = ''
   } else if(action == 'pause'){
-    dialogTitle.innerText = 'Game paused...'
-    continueButton.innerText = "Continue"
-    continueButton.style.display = ''
-    dialogTime.parentElement.style.display = ''
-    welcome.style.display = 'none'
-    scoreCount.parentElement.style.display = ''
-    restartButton.style.display = ''
-    levelsGroup.style.display = 'none'
+    dialogPause.style.display = ''
+    dialogEnd.style.display = 'none'
+    dialogStart.style.display = 'none'
   } else if(action == 'end'){
-    dialogTitle.innerText = "Time's up!"
-    continueButton.innerText = "Continue"
-    continueButton.style.display = 'none'
-    welcome.style.display = 'none'
-    dialogTime.parentElement.style.display = 'none'
-    scoreCount.parentElement.style.display = ''
-    restartButton.style.display = ''
-    levelsGroup.style.display = 'none'
+    dialogPause.style.display = 'none'
+    dialogEnd.style.display = ''
+    dialogStart.style.display = 'none'
   }
 }
 

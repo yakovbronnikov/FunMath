@@ -24,7 +24,7 @@
 
 
 body {
-  background: linear-gradient(180deg, #7442C5 0%, #14284F 100%);
+  background: #2E3675;
   height: 100vh;
   display: -webkit-flex;
   display: -ms-flex;
@@ -41,7 +41,7 @@ a:hover {opacity: 1; color: #FFCD4D;}
   display: grid;
   grid-row-gap: 32px;
   width: min(var(--main-width), 460px);
-  margin: 24px auto;
+  margin: 24px auto 40px;
   background: #11163F;
   padding: 24px;
   border-radius: 12px;
@@ -60,10 +60,6 @@ a:hover {opacity: 1; color: #FFCD4D;}
   transition: .3s;
 }
 
-.dialog_info {
-  margin: 40px 0;
-}
-
 dialog::backdrop {
   background: rgba(0,0,20,.8);
   -webkit-backdrop-filter: blur(4px);
@@ -76,6 +72,13 @@ dialog::backdrop {
   display: flex;
   justify-content: center;
   margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.dialog_content {
+  width: 100%;
+  display: grid;
+  grid-row-gap: 40px;
 }
 
 
@@ -202,7 +205,7 @@ dialog::backdrop {
 #my_dialog .numpad_key {
   padding: 12px 32px;
   border: none;
-  margin: 0 12px;
+  margin: 12px;
   width: auto;
   height: auto;
   font-size: 24px;
@@ -219,9 +222,13 @@ dialog::backdrop {
 
 .levels {
   width: 100%;
-  display: grid;
-  grid-row-gap: 24px;
-  margin-bottom: 40px;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 32px;
 }
 
 .levels  .numpad_key {
