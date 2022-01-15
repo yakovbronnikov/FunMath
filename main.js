@@ -6,8 +6,6 @@ if('serviceWorker' in navigator) {
     .catch((err) => console.log(err));
 };
 
-console.log(window.localStorage.getItem('userRecordStorage'))
-
 // Audio settings
 
 function audioActions(audio, action){
@@ -106,7 +104,7 @@ let myTimer = setInterval(
       }
     }
   },
-  10
+  1000
 )
 
 
