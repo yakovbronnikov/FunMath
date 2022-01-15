@@ -1,7 +1,3 @@
-window.localStorage.setItem('userRecordStorage', '');
-let userRecordStorage = window.localStorage.getItem('userRecordStorage');
-
-
 if('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js')
     .then(() => navigator.serviceWorker.ready.then((worker) => {
@@ -9,6 +5,8 @@ if('serviceWorker' in navigator) {
     }))
     .catch((err) => console.log(err));
 };
+
+console.log(window.localStorage.getItem('userRecordStorage'))
 
 // Audio settings
 
@@ -56,16 +54,24 @@ function levelChoice(from, to) {
   return levelFrom, levelTo
 }
 
+function storageRecordCheck() {
+  if(window.localStorage.getItem('userRecordStorage') == 0){
+    return userRecord.innerText
+  } else {
+    userRecord.innerText = window.localStorage.getItem('userRecordStorage')
+    return userRecord.innerText
+  }
+}
+
 
 function recordCheck() {
-  let userRecordString = userRecord.innerText
+  let userRecordString = storageRecordCheck()
   let scoreCountString = scoreCount.innerText
   let usesrRating = document.getElementById('rating')
   if(userRecordString < scoreCountString) {
     userRecord.innerText = scoreCountString
     usesrRating.innerText = '🔥🔥🔥'
-    userRecordStorage = scoreCountString
-    console.log(userRecordStorage);
+    window.localStorage.setItem('userRecordStorage', scoreCountString);
   } else {
     usesrRating.innerText = '👍👍👍'
   }
@@ -100,7 +106,7 @@ let myTimer = setInterval(
       }
     }
   },
-  1000
+  10
 )
 
 
