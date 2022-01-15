@@ -1,3 +1,7 @@
+window.localStorage.setItem('userRecordStorage', '');
+let userRecordStorage = window.localStorage.getItem('userRecordStorage');
+
+
 if('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js')
     .then(() => navigator.serviceWorker.ready.then((worker) => {
@@ -19,17 +23,13 @@ function audioActions(audio, action){
   }
 }
 
-
-
-
-// Timer and raund settings
 let pause = document.getElementById('pause')
 let gameDialog = document.getElementById('my_dialog')
 let myResult = 0
 let scoreCount = document.getElementById('score_count')
 let taskCount = document.getElementById('task_count')
 let dialogTime = document.getElementById('dialog_time')
-
+let userRecord = document.getElementById('user_record')
 
 let mainAudio = document.getElementById('level_main')
 let dialogAudio = document.getElementById('dialog_audio')
@@ -42,12 +42,6 @@ let endAudio = document.getElementById('end_audio')
 let levelFrom = 0
 let levelTo = 0
 
-function levelChoice(from, to) {
-  levelFrom = from
-  levelTo = to
-  return levelFrom, levelTo
-}
-
 mainAudio.volume = .1
 dialogAudio.volume = .2
 numpadAudio.volume = .2
@@ -55,6 +49,28 @@ clearAudio.volume = .2
 errorAudio.volume = .15
 successAudio.volume = .2
 endAudio.volume = .2
+
+function levelChoice(from, to) {
+  levelFrom = from
+  levelTo = to
+  return levelFrom, levelTo
+}
+
+
+function recordCheck() {
+  let userRecordString = userRecord.innerText
+  let scoreCountString = scoreCount.innerText
+  let usesrRating = document.getElementById('rating')
+  if(userRecordString < scoreCountString) {
+    userRecord.innerText = scoreCountString
+    usesrRating.innerText = '🔥🔥🔥'
+    userRecordStorage = scoreCountString
+    console.log(userRecordStorage);
+  } else {
+    usesrRating.innerText = '👍👍👍'
+  }
+}
+
 
 
 
@@ -75,6 +91,7 @@ let myTimer = setInterval(
       document.getElementById('time_count').innerText = timeValue - 1
     } else {
       if(timeValue == 0 && pause.checked == true){
+        recordCheck()
         audioActions(endAudio, 'play')
         dialogAction('end')
         pauseState()
