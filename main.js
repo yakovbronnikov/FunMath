@@ -240,9 +240,9 @@ function taskRandom(){
   } else {
     operator = operators[randomNumber(0, 1)]
     operator2 = operators[randomNumber(0, 2)]
-    x = randomNumber(10, 60)
+    x = randomNumber(50, 100)
     y = randomNumber(2, 10)
-    z = randomNumber(2, 6)
+    z = randomNumber(2, 5)
   }
   myResult = levelMath(x,y,z,operator, operator2)
   return myResult
