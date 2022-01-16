@@ -53,7 +53,7 @@ function levelChoice(from, to) {
 }
 
 function storageRecordCheck() {
-  if(window.localStorage.getItem('userRecordStorage') == 0){
+  if(Number(window.localStorage.getItem('userRecordStorage')) == 0){
     return userRecord.innerText
   } else {
     userRecord.innerText = window.localStorage.getItem('userRecordStorage')
@@ -66,7 +66,7 @@ function recordCheck() {
   let userRecordString = storageRecordCheck()
   let scoreCountString = scoreCount.innerText
   let usesrRating = document.getElementById('rating')
-  if(userRecordString < scoreCountString) {
+  if(Number(userRecordString) < Number(scoreCountString)) {
     userRecord.innerText = scoreCountString
     usesrRating.innerText = '🔥🔥🔥'
     window.localStorage.setItem('userRecordStorage', scoreCountString);

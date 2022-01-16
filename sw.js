@@ -4,7 +4,9 @@ const timeout = 400;
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(cacheName).then((cache) => cache.addAll([
+                'index.html',
                 'style.css',
+                'main.js',
                 'audio/level_main.mp3',
                 'audio/dialog_audio.mp3',
                 'audio/clear_audio.mp3',
