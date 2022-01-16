@@ -6,6 +6,7 @@ if('serviceWorker' in navigator) {
     .catch((err) => console.log(err));
 };
 
+
 // Audio settings
 
 function audioActions(audio, action){
@@ -107,6 +108,11 @@ let myTimer = setInterval(
   1000
 )
 
+window.addEventListener('blur', function(){
+  pauseState()
+})
+
+
 
 function continueGame(){
   audioActions(dialogAudio, 'play')
@@ -198,8 +204,13 @@ function randomNumber(min, max) {
 
 
 
-function levelMath(x,y,operator) {
-  const task = x + operator + y
+function levelMath(x, y , z , operator, operator2) {
+  let task = ''
+  if(operator2 < '') {
+    task = x + operator + y
+  } else {
+    task = x + operator + y + operator2 + z
+  }
   let result = eval(task)
   document.getElementById('task').value = task
   return result
@@ -207,10 +218,12 @@ function levelMath(x,y,operator) {
 
 
 function taskRandom(){
-  const operators = [' + ',' - ',' * ',' / ']
+  const operators = [' + ',' - ',' * ',' / ', 'complex']
   let operator = operators[randomNumber(levelFrom, levelTo)]
   let x = ''
   let y = ''
+  let z = ''
+  let operator2 = ''
   if (operator == ' + ') {
     x = randomNumber(2, 100)
     y = randomNumber(2, 100)
@@ -220,12 +233,18 @@ function taskRandom(){
   } else if (operator == ' * ') {
     x = randomNumber(2, 30)
     y = randomNumber(2, 10)
-  } else {
+  } else if (operator == ' / '){
     x = randomNumber(2, 30)
     y = randomNumber(2, 10)
     x = x * y
+  } else {
+    operator = operators[randomNumber(0, 1)]
+    operator2 = operators[randomNumber(0, 2)]
+    x = randomNumber(10, 60)
+    y = randomNumber(2, 10)
+    z = randomNumber(2, 6)
   }
-  myResult = levelMath(x,y,operator)
+  myResult = levelMath(x,y,z,operator, operator2)
   return myResult
 }
 
@@ -287,7 +306,6 @@ function addReaction(emoji){
 
 
 // Call basic functions
-
 
 dialogAction('start')
 pauseState()

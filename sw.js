@@ -7,6 +7,7 @@ self.addEventListener('install', (event) => {
                 'index.html',
                 'style.css',
                 'main.js',
+                'sw.js',
                 'audio/level_main.mp3',
                 'audio/dialog_audio.mp3',
                 'audio/clear_audio.mp3',
