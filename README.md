@@ -1,3 +1,6 @@
+<p align="center">
+<img src="img/gh_cover.png">
+</p>
 # Welcome to FunMath!
 
 FunMath is a easy game based on vanilla JavaScript. The project is made in PWA format.
