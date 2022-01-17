@@ -1,37 +1,28 @@
-## Welcome to GitHub Pages
+# Welcome to FunMath!
 
-You can use the [editor on GitHub](https://github.com/yakovbronnikov/FunMath/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+FunMath is a easy game based on vanilla JavaScript. The project is made in PWA format.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## The essence of the game
 
-### Markdown
+The app generates mathematical problems that the user must calculate and write the correct answer. The duration of one round is 60 seconds.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### There are 3 difficulty levels
+1. Easy🐣 Sum and subtract only.
+2. Medium😎 Easy level with the addition of multiplication and division.
+3. Hard🔥 Division and complex problems
 
-```markdown
-Syntax highlighted code block
+The highest number of correct answers is a record. Try to calculate more than 17 😏
 
-# Header 1
-## Header 2
-### Header 3
+## Future plans
+- Rewrite the application in Angular
+- Make home page
+- Refine and expand the levels
 
-- Bulleted
-- List
+## User Suggestions
+- Add Leaderboard
+- Upload the app on google play
+- Add more complex math operations
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/yakovbronnikov/FunMath/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## Support or Contact
+- [My instagram](https://www.instagram.com/yakov_ux/)
+- [My Dribbble](https://dribbble.com/yakovbronnikov)
