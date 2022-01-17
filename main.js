@@ -320,3 +320,5 @@ function addReaction(emoji){
 
 dialogAction('start')
 pauseState()
+
+screen.orientation.lock('portrait-primary')
