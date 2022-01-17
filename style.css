@@ -33,8 +33,19 @@ body {
   align-items: center;
 }
 
-a {opacity: .3;}
-a:hover {opacity: 1; color: #FFCD4D;}
+a {
+  opacity: .3;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 1;
+  color: #FFCD4D;
+  text-decoration: underline;
+}
 
 
 .level_container {
@@ -320,8 +331,6 @@ footer {
   -ms-align-items: center;
   align-items: center;
 }
-
-footer span {opacity: .3; font-size: 14px;}
 
 
 @media (max-width: 600px) {
