@@ -14,8 +14,8 @@
   outline: none;
 }
 
-#my_dialog span,
-#my_dialog p {
+dialog span,
+dialog p {
   opacity: .6;
   font-weight: 300;
   font-family: 'Nunito', sans-serif;
@@ -33,7 +33,7 @@ body {
   align-items: center;
 }
 
-a {opacity: .5;}
+a {opacity: .3;}
 a:hover {opacity: 1; color: #FFCD4D;}
 
 
@@ -48,7 +48,7 @@ a:hover {opacity: 1; color: #FFCD4D;}
   box-shadow: 0px 16px 0px #000000;
 }
 
-#my_dialog {
+dialog {
   background: #11163F;
   text-align: center;
   width: min(var(--main-width), 500px);
@@ -201,8 +201,8 @@ dialog::backdrop {
   background: #EABD49;
 }
 
-#my_dialog .numpad_action_key,
-#my_dialog .numpad_key {
+dialog .numpad_action_key,
+dialog .numpad_key {
   padding: 12px 32px;
   border: none;
   margin: 12px;
@@ -212,7 +212,7 @@ dialog::backdrop {
   border-radius: 8px;
 }
 
-#my_dialog .numpad_action_key:focus{
+dialog .numpad_action_key:focus{
   outline: none;
 }
 
@@ -232,7 +232,8 @@ dialog::backdrop {
 }
 
 .levels  .numpad_key {
-  width: 100%;
+  width: auto;
+  height: auto;
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
@@ -301,9 +302,40 @@ dialog::backdrop {
   transition: transform .8s, opacity .8s;
 }
 
+.score_content span {
+  font-size: 20px;
+  opacity: 1;
+}
+
+.score_content {
+  margin: 4px 0;
+}
+
+footer {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: space-between;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+footer span {opacity: .3; font-size: 14px;}
+
 
 @media (max-width: 600px) {
   body {
     align-items: stretch;
   }
+}
+
+@media (max-width: 375px) {
+  .numpad_key {height: 100%; min-height: 48px}
+  .numpad {height: 100%;}
+  .task_form {align-self: auto;}
+  .level_container {grid-row-gap: 0px}
+  .task_form span, #task {font-size: 28px;}
+  #solution {font-size: 32px;}
+  #time_count {font-size: 18px;}
 }

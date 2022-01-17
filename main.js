@@ -66,13 +66,24 @@ function storageRecordCheck() {
 function recordCheck() {
   let userRecordString = storageRecordCheck()
   let scoreCountString = scoreCount.innerText
+  let scorePercent = 0
   let usesrRating = document.getElementById('rating')
-  if(Number(userRecordString) < Number(scoreCountString)) {
+
+  if(Number(userRecordString) > 0){
+    let userRecordPercent = Number(userRecordString) / 100
+    scorePercent = Number(scoreCountString) / userRecordPercent
+  }
+
+  if(scorePercent < 40) {
+    usesrRating.innerText = '😞😞😞'
+  } else if(scorePercent < 80){
+    usesrRating.innerText = '😕😕😕'
+  } else if(scorePercent <= 100){
+    usesrRating.innerText = '😍😍😍'
+  } else {
     userRecord.innerText = scoreCountString
     usesrRating.innerText = '🔥🔥🔥'
     window.localStorage.setItem('userRecordStorage', scoreCountString);
-  } else {
-    usesrRating.innerText = '👍👍👍'
   }
 }
 
