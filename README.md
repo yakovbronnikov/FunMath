@@ -20,7 +20,7 @@ The highest number of correct answers is a record. Try to calculate more than 17
 
 ## User Suggestions
 - Add Leaderboard
-- Upload the app on google play
+- Upload the app on Google Play
 - Add more complex math operations
 
 ## Support or Contact
