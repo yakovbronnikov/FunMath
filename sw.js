@@ -24,7 +24,6 @@ self.addEventListener('install', (event) => {
 self.addEventListener('fetch', (event) => {
     event.respondWith(fromNetwork(event.request, timeout)
       .catch((err) => {
-          console.log(`Error: ${err.message()}`);
           return fromCache(event.request);
       }));
 });
