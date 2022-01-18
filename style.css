@@ -3,6 +3,7 @@
 
 :root {
   --main-width: calc(100vw - 32px);
+  --main-height: calc(100vh - 48px);
 }
 
 * {
@@ -66,6 +67,7 @@ a:hover {
 
 
 .dialog_backdrop {
+  overflow: scroll;
   position: absolute;
   top: 0; bottom: 0;
   left: 0; right: 0;
@@ -122,8 +124,10 @@ a:hover {
   display: -ms-flex;
   display: flex;
   justify-content: center;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
   flex-wrap: wrap;
+  -ms-align-items: center;
+  align-items: center;
 }
 
 .dialog_content {
@@ -376,32 +380,20 @@ footer {
 
 
 @media (max-width: 600px) {
-  body, .dialog_backdrop {
-    align-items: stretch;
-  }
+  body {align-items: stretch;}
+  .level_container, .dialog_window  {grid-row-gap: 0px; padding: 16px;}
 }
 
 @media (max-width: 375px) {
-  .numpad_key {height: 100%; min-height: 48px}
   .numpad {height: 100%;}
+  .numpad_key {height: 100%; min-height: 48px}
   .task_form {align-self: auto;}
-  .level_container, .dialog_window  {grid-row-gap: 0px; padding: 16px;}
   .task_form span, #task {font-size: 28px;}
   #solution {font-size: 32px;}
   #time_count {font-size: 18px;}
 }
 
-
-@media (max-height: 375px) {
-  body, .dialog_backdrop {align-items: stretch;}
-
-  .numpad_key {height: 100%; min-height: 48px}
-  .task_form {align-self: auto;}
-  .dialog_window  {grid-row-gap: 0px; padding: 16px;}
-  .task_form span, #task {font-size: 28px;}
-  #solution {font-size: 32px;}
-  #time_count {font-size: 18px;}
-
+@media (max-height: 414px) {
   .level_container {
     width: var(--main-width);
     grid-column-gap: 32px;
@@ -411,4 +403,16 @@ footer {
   }
 
   .numpad {height: 100%; grid-row: 1/3; grid-column: 2/3;}
+}
+
+
+@media (max-height: 568px) {
+  body {align-items: stretch;}
+  .dialog_backdrop {align-items: flex-start;}
+  .numpad_key {height: 100%; min-height: 48px}
+  .task_form {align-self: auto;}
+  .dialog_window  {grid-row-gap: 0px; padding: 16px;}
+  .task_form span, #task {font-size: 28px;}
+  #solution {font-size: 32px;}
+  #time_count {font-size: 18px;}
 }
