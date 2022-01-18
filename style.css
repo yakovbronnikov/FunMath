@@ -78,6 +78,8 @@ a:hover {
   display: flex;
   -ms-align-items: center;
   align-items: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .dialog_window {
@@ -91,11 +93,11 @@ a:hover {
   border-radius: 12px;
   padding: 24px;
   border: none;
-  transition: transform .1s ease-in-out, opacity .4s;
-  -webkit-transform: translateY(100px);
-  -ms-transform: translateY(100px);
-  transform: translateY(100px);
+  transition: transform .1s ease-in-out, opacity .1s ease-in-out;
   opacity: 0;
+  -webkit-transform: rotateX(20deg) translateY(-40px);
+  -ms-transform: rotateX(20deg) translateY(-40px);
+  transform: rotateX(20deg) translateY(-40px);
 }
 
 #game_dialog {
@@ -107,10 +109,10 @@ a:hover {
 }
 
 #game_dialog:checked ~ .dialog_backdrop .dialog_window {
+  -webkit-transform: rotateX(0deg) translateY(0);
+  -ms-transform: rotateX(0deg) translateY(0);
+  transform: rotateX(0deg) translateY(0);
   opacity: 1;
-  -webkit-transform: translateY(0);
-  -ms-transform: translateY(0);
-  transform: translateY(0);
 }
 
 

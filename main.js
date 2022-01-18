@@ -112,7 +112,7 @@ let myTimer = setInterval(
       }
     }
   },
-  50
+  1000
 )
 
 window.addEventListener('blur', function(){
@@ -154,6 +154,8 @@ function dialogAction(action){
     dialogPause.style.display = 'none'
     dialogEnd.style.display = ''
     dialogStart.style.display = 'none'
+    dialogEnd.style.pointerEvents = 'none'
+    setTimeout(() => {dialogEnd.style.pointerEvents = 'auto'}, 1000)
   }
 }
 
@@ -314,4 +316,3 @@ function addReaction(emoji){
 // Call basic functions
 
 dialogAction('start')
-pauseState()
