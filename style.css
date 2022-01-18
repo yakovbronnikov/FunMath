@@ -14,8 +14,9 @@
   outline: none;
 }
 
-dialog span,
-dialog p {
+
+.dialog_window span,
+.dialog_window p {
   opacity: .6;
   font-weight: 300;
   font-family: 'Nunito', sans-serif;
@@ -31,6 +32,7 @@ body {
   display: flex;
   -ms-align-items: center;
   align-items: center;
+  overflow: hidden;
 }
 
 a {
@@ -49,6 +51,7 @@ a:hover {
 
 
 .level_container {
+  overflow: scroll;
   display: grid;
   grid-row-gap: 32px;
   width: min(var(--main-width), 460px);
@@ -59,23 +62,58 @@ a:hover {
   box-shadow: 0px 16px 0px #000000;
 }
 
-dialog {
+
+
+
+.dialog_backdrop {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  background: rgba(0,0,20,.8);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  visibility: hidden;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+.dialog_window {
+  margin: 24px auto 32px;
+  overflow: scroll;
+  display: grid;
   background: #11163F;
   text-align: center;
   width: min(var(--main-width), 500px);
   box-shadow: 0px 16px 0px #000000;
   border-radius: 12px;
-  margin: auto;
   padding: 24px;
   border: none;
-  transition: .3s;
+  transition: transform .1s ease-in-out, opacity .4s;
+  -webkit-transform: translateY(100px);
+  -ms-transform: translateY(100px);
+  transform: translateY(100px);
+  opacity: 0;
 }
 
-dialog::backdrop {
-  background: rgba(0,0,20,.8);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
+#game_dialog {
+  display: none;
 }
+
+#game_dialog:checked ~ .dialog_backdrop {
+  visibility: visible;
+}
+
+#game_dialog:checked ~ .dialog_backdrop .dialog_window {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+
+
 
 .dialog_button_group {
   display: -webkit-flex;
@@ -212,8 +250,9 @@ dialog::backdrop {
   background: #EABD49;
 }
 
-dialog .numpad_action_key,
-dialog .numpad_key {
+
+.dialog_window .numpad_action_key,
+.dialog_window .numpad_key {
   padding: 12px 32px;
   border: none;
   margin: 12px;
@@ -223,7 +262,8 @@ dialog .numpad_key {
   border-radius: 8px;
 }
 
-dialog .numpad_action_key:focus{
+
+.dialog_window .numpad_action_key:focus{
   outline: none;
 }
 
@@ -334,7 +374,7 @@ footer {
 
 
 @media (max-width: 600px) {
-  body {
+  body, .dialog_backdrop {
     align-items: stretch;
   }
 }
@@ -343,8 +383,30 @@ footer {
   .numpad_key {height: 100%; min-height: 48px}
   .numpad {height: 100%;}
   .task_form {align-self: auto;}
-  .level_container {grid-row-gap: 0px}
+  .level_container, .dialog_window  {grid-row-gap: 0px; padding: 16px;}
   .task_form span, #task {font-size: 28px;}
   #solution {font-size: 32px;}
   #time_count {font-size: 18px;}
+}
+
+
+@media (max-height: 375px) {
+  body, .dialog_backdrop {align-items: stretch;}
+
+  .numpad_key {height: 100%; min-height: 48px}
+  .task_form {align-self: auto;}
+  .dialog_window  {grid-row-gap: 0px; padding: 16px;}
+  .task_form span, #task {font-size: 28px;}
+  #solution {font-size: 32px;}
+  #time_count {font-size: 18px;}
+
+  .level_container {
+    width: var(--main-width);
+    grid-column-gap: 32px;
+    grid-row-gap: 0;
+    grid-template-columns: 1fr 1fr;
+    align-self: stretch;
+  }
+
+  .numpad {height: 100%; grid-row: 1/3; grid-column: 2/3;}
 }

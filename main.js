@@ -20,8 +20,7 @@ function audioActions(audio, action){
   }
 }
 
-let pause = document.getElementById('pause')
-let gameDialog = document.getElementById('my_dialog')
+let pause = document.getElementById('game_dialog')
 let myResult = 0
 let scoreCount = document.getElementById('score_count')
 let taskCount = document.getElementById('task_count')
@@ -91,10 +90,9 @@ function recordCheck() {
 
 
 function pauseState() {
-  if(gameDialog.open == false){
+  if(pause.checked != true) {
     audioActions(dialogAudio, 'play')
-    pause.checked = false
-    gameDialog.showModal()
+    pause.checked = true
     audioActions(mainAudio, 'pause')
   }
 }
@@ -103,20 +101,18 @@ function pauseState() {
 let myTimer = setInterval(
   function myTimerFunc(){
     let timeValue = Number(document.getElementById('time_count').innerText)
-    if(timeValue > 0 && pause.checked == true){
+    if(timeValue > 0 && pause.checked == false){
       document.getElementById('time_count').innerText = timeValue - 1
     } else {
-      if(timeValue == 0 && pause.checked == true){
+      if(timeValue == 0 && pause.checked == false){
         recordCheck()
         audioActions(endAudio, 'play')
         dialogAction('end')
         pauseState()
-      } else if(timeValue > 0 && timeValue < 60){
-        dialogAction('pause')
       }
     }
   },
-  1000
+  50
 )
 
 window.addEventListener('blur', function(){
@@ -127,8 +123,7 @@ window.addEventListener('blur', function(){
 
 function continueGame(){
   audioActions(dialogAudio, 'play')
-  pause.checked = true
-  gameDialog.close()
+  pause.checked = false
   audioActions(mainAudio, 'play')
 }
 

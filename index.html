@@ -29,15 +29,14 @@
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/87144018" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
-
+  <input type="checkbox" id="game_dialog" checked>
   <div class="level_container" id="level_container">
     <div class="level_header">
       <div class="emoji_button">
         <span>⏱</span>
         <time id="time_count">60</time>
       </div>
-      <input type="checkbox" id="pause" onchange="pauseState()" checked>
-      <label for="pause" class="emoji_button">⏸</label>
+      <button class="emoji_button" onclick="pauseState()">⏸</button>
     </div>
     <div class="task_form">
       <input type="text" id="task" readonly>
@@ -60,66 +59,68 @@
     </div>
   </div>
 
-  <dialog id="my_dialog">
-    <div class="dialog_content" id="dialog_pause">
-      <h1>Game paused...</h1>
-      <div class="dialog_button_group">
-        <button onclick="continueGame()" id="continue_button" class="numpad_action_key">Continue</button>
-        <button onclick="restartGame()" id="restart_button" class="numpad_key">Restart</button>
-      </div>
-    </div>
-    <div class="dialog_content" id="dialog_end">
-      <h1>Time's up!</h1>
-      <div class="user_rating">
-        <h1 id="rating"></h1>
-        <div class="score_content">
-          <span id='score_count'>0</span>
-          <span>of</span>
-          <span id='task_count'>0</span>
-        </div>
-        <div>
-          <span>Record:</span>
-          <span id="user_record"></span>
+  <div class="dialog_backdrop" aria-hidden="true">
+    <div class="dialog_window">
+      <div class="dialog_content" id="dialog_pause">
+        <h1>Game paused...</h1>
+        <div class="dialog_button_group">
+          <button onclick="continueGame()" id="continue_button" class="numpad_action_key">Continue</button>
+          <button onclick="restartGame()" id="restart_button" class="numpad_key">Restart</button>
         </div>
       </div>
-      <div class="levels">
-        <button class="numpad_key" onclick='continueGame(); levelChoice(0, 1); taskRandom(); restartGame();'>
-          <h3>Easy 🐥</h3>
-          <p>Sum & Subtract</p>
-        </button>
-        <button class="numpad_key" onclick='continueGame(); levelChoice(0, 3); taskRandom(); restartGame();'>
-          <h3>Medium 😎</h3>
-          <p>Multiply & Division</p>
-        </button>
-        <button class="numpad_key" onclick='continueGame(); levelChoice(4, 4); taskRandom(); restartGame();'>
-          <h3>Hard 🔥</h3>
-          <p>Complex problems</p>
-        </button>
+      <div class="dialog_content" id="dialog_end">
+        <h1>Time's up!</h1>
+        <div class="user_rating">
+          <h1 id="rating"></h1>
+          <div class="score_content">
+            <span id='score_count'>0</span>
+            <span>of</span>
+            <span id='task_count'>0</span>
+          </div>
+          <div>
+            <span>Record:</span>
+            <span id="user_record"></span>
+          </div>
+        </div>
+        <div class="levels">
+          <button class="numpad_key" onclick='continueGame(); levelChoice(0, 1); taskRandom(); restartGame(); dialogAction("pause");'>
+            <h3>Easy 🐥</h3>
+            <p>Sum & Subtract</p>
+          </button>
+          <button class="numpad_key" onclick='continueGame(); levelChoice(0, 3); taskRandom(); restartGame(); dialogAction("pause");'>
+            <h3>Medium 😎</h3>
+            <p>Multiply & Division</p>
+          </button>
+          <button class="numpad_key" onclick='continueGame(); levelChoice(4, 4); taskRandom(); restartGame(); dialogAction("pause");'>
+            <h3>Hard 🔥</h3>
+            <p>Complex problems</p>
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="dialog_content" id="dialog_start">
-      <h1>Hello my friend!</h1>
-      <p id="welcome">This is a FunMath game. Here you need to solve mathematical problems in your mind! To get started, choose your difficulty level:</p>
-      <div class="levels">
-        <button class="numpad_key" onclick='continueGame(); levelChoice(0, 1); taskRandom();'>
-          <h3>Easy 🐥</h3>
-          <p>Sum & Subtract</p>
-        </button>
-        <button class="numpad_key" onclick='continueGame(); levelChoice(0, 3); taskRandom();'>
-          <h3>Medium 😎</h3>
-          <p>Added Multiply & Division</p>
-        </button>
-        <button class="numpad_key" onclick='continueGame(); levelChoice(4, 4); taskRandom();'>
-          <h3>Hard 🔥</h3>
-          <p>Complex problems</p>
-        </button>
+      <div class="dialog_content" id="dialog_start">
+        <h1>Hello my friend!</h1>
+        <p id="welcome">This is a FunMath game. Here you need to solve mathematical problems in your mind! To get started, choose your difficulty level:</p>
+        <div class="levels">
+          <button class="numpad_key" onclick='continueGame(); levelChoice(0, 1); taskRandom(); dialogAction("pause")'>
+            <h3>Easy 🐥</h3>
+            <p>Sum & Subtract</p>
+          </button>
+          <button class="numpad_key" onclick='continueGame(); levelChoice(0, 3); taskRandom(); dialogAction("pause")'>
+            <h3>Medium 😎</h3>
+            <p>Added Multiply & Division</p>
+          </button>
+          <button class="numpad_key" onclick='continueGame(); levelChoice(4, 4); taskRandom(); dialogAction("pause")'>
+            <h3>Hard 🔥</h3>
+            <p>Complex problems</p>
+          </button>
+        </div>
       </div>
+      <footer>
+        <a href="https://github.com/yakovbronnikov/FunMath">2022 &#169; FunMath</a>
+        <a href="https://www.instagram.com/yakov_ux/" target="_blank" rel="noopener">My Instagram</a>
+      </footer>
     </div>
-    <footer>
-      <a href="https://github.com/yakovbronnikov/FunMath">2022 &#169; FunMath</a>
-      <a href="https://www.instagram.com/yakov_ux/" target="_blank" rel="noopener">My Instagram</a>
-    </footer>
-  </dialog>
+  </div>
 
 
   <div class="reactions_block">
