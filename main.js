@@ -280,7 +280,6 @@ function resultCheck() {
 }
 
 function solutionClear() {
-  document.getElementById('solution').type = 'number'
   document.getElementById('solution').value = ''
 }
 
