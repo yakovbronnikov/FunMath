@@ -42,7 +42,7 @@ function fromNetwork(request, timeout) {
 function fromCache(request) {
 // Открываем наше хранилище кэша (CacheStorage API), выполняем поиск запрошенного ресурса.
 // Обратите внимание, что в случае отсутствия соответствия значения Promise выполнится успешно, но со значением `undefined`
-    return caches.open(CACHE).then((cache) =>
+    return caches.open(cacheName).then((cache) =>
         cache.match(request).then((matching) =>
             matching || Promise.reject('no-match')
         ));
