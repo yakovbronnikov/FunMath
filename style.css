@@ -371,7 +371,7 @@ footer {
   display: flex;
   justify-content: space-between;
   -ms-align-items: center;
-  align-items: center;
+  align-items: flex-end;
 }
 
 
