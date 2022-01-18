@@ -21,6 +21,7 @@ function audioActions(audio, action){
 }
 
 let pause = document.getElementById('game_dialog')
+let levelTime = document.getElementById('time_count')
 let myResult = 0
 let scoreCount = document.getElementById('score_count')
 let taskCount = document.getElementById('task_count')
@@ -100,9 +101,9 @@ function pauseState() {
 
 let myTimer = setInterval(
   function myTimerFunc(){
-    let timeValue = Number(document.getElementById('time_count').innerText)
+    let timeValue = Number(levelTime.innerText)
     if(timeValue > 0 && pause.checked == false){
-      document.getElementById('time_count').innerText = timeValue - 1
+      levelTime.innerText = timeValue - 1
     } else {
       if(timeValue == 0 && pause.checked == false){
         recordCheck()
@@ -188,14 +189,19 @@ function numpadKeyClick(number){
 document.addEventListener('keydown', keyPress)
 
 function keyPress(event) {
+  let timeValue = Number(levelTime.innerText)
   let key = event.key
-  if (key >= '0' && key <= '9'){
-    numpadKeyClick(key)
-  } else if(key == 'Backspace'){
-    solutionClear()
-  } else if(key == 'Enter'){
-    resultCheck()
-  } else if(key == 'Escape' && pause.checked == false){
+  if (pause.checked == false){
+    if (key >= '0' && key <= '9' ){
+      numpadKeyClick(key)
+    } else if(key == 'Backspace' ){
+      solutionClear()
+    } else if(key == 'Enter'){
+      resultCheck()
+    } else if(key == 'Escape'){
+      pauseState()
+    }
+  } else if(key == 'Escape' && timeValue > 0 && timeValue < 60){
     continueGame()
   }
 }

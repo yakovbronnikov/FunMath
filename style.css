@@ -80,7 +80,7 @@ a:hover {
   display: flex;
   -ms-align-items: center;
   align-items: center;
-  perspective: 1000px;
+  perspective: 500px;
   transform-style: preserve-3d;
 }
 
@@ -95,7 +95,7 @@ a:hover {
   border-radius: 12px;
   padding: 24px;
   border: none;
-  transition: transform .1s ease-in-out, opacity .1s ease-in-out;
+  transition: transform .1s cubic-bezier(0.4,-0.85, 0.53, 2.36), opacity .1s ease-in-out;
   opacity: 0;
   -webkit-transform: rotateX(20deg) translateY(-40px);
   -ms-transform: rotateX(20deg) translateY(-40px);
