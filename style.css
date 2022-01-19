@@ -52,7 +52,6 @@ a:hover {
 
 
 .level_container {
-  overflow: scroll;
   display: grid;
   grid-row-gap: 32px;
   width: min(var(--main-width), 460px);
@@ -67,7 +66,6 @@ a:hover {
 
 
 .dialog_backdrop {
-  overflow: scroll;
   position: absolute;
   top: 0; bottom: 0;
   left: 0; right: 0;
@@ -86,7 +84,6 @@ a:hover {
 
 .dialog_window {
   margin: 24px auto 32px;
-  overflow: scroll;
   display: grid;
   background: #11163F;
   text-align: center;
@@ -405,13 +402,16 @@ footer {
   .numpad {height: 100%; grid-row: 1/3; grid-column: 2/3;}
 }
 
+@media (max-height: 620px){
+  .dialog_backdrop {align-items: flex-start; overflow-y: scroll;}
+}
+
 
 @media (max-height: 568px) {
   body {align-items: stretch;}
-  .dialog_backdrop {align-items: flex-start;}
   .numpad_key {height: 100%; min-height: 48px}
   .task_form {align-self: auto;}
-  .dialog_window  {grid-row-gap: 0px; padding: 16px;}
+  .dialog_window {grid-row-gap: 0px; padding: 16px; }
   .task_form span, #task {font-size: 28px;}
   #solution {font-size: 32px;}
   #time_count {font-size: 18px;}
