@@ -1,3 +1,5 @@
+/* Basic styles */
+
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;500;600;700&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
@@ -16,14 +18,6 @@
 }
 
 
-.dialog_window span,
-.dialog_window p {
-  opacity: .6;
-  font-weight: 300;
-  font-family: 'Nunito', sans-serif;
-}
-
-
 
 body {
   background: #2E3675;
@@ -33,21 +27,6 @@ body {
   display: flex;
   -ms-align-items: center;
   align-items: center;
-  overflow: hidden;
-}
-
-a {
-  opacity: .3;
-  font-family: 'Nunito', sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  text-decoration: none;
-}
-
-a:hover {
-  opacity: 1;
-  color: #FFCD4D;
-  text-decoration: underline;
 }
 
 
@@ -62,7 +41,7 @@ a:hover {
   box-shadow: 0px 16px 0px #000000;
 }
 
-
+/* Dialog */
 
 
 .dialog_backdrop {
@@ -97,6 +76,27 @@ a:hover {
   -webkit-transform: rotateX(20deg) translateY(-40px);
   -ms-transform: rotateX(20deg) translateY(-40px);
   transform: rotateX(20deg) translateY(-40px);
+}
+
+.dialog_window span,
+.dialog_window p {
+  opacity: .6;
+  font-weight: 300;
+  font-family: 'Nunito', sans-serif;
+}
+
+footer a {
+  opacity: .3;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+footer a:hover {
+  opacity: 1;
+  color: #FFCD4D;
+  text-decoration: underline;
 }
 
 #game_dialog {
@@ -255,7 +255,8 @@ a:hover {
 
 
 .dialog_window .numpad_action_key,
-.dialog_window .numpad_key {
+.dialog_window .numpad_key,
+.about_container .numpad_action_key {
   padding: 12px 32px;
   border: none;
   margin: 12px;
@@ -376,9 +377,151 @@ footer {
 }
 
 
+
+/* About */
+
+.about_container {
+  width: min(var(--main-width), 640px);
+  display: grid;
+  grid-row-gap: 80px;
+  margin: 24px auto;
+  padding: 0px 24px 24px;
+  align-self: flex-start;
+}
+
+.about_banner h1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 72px;
+}
+
+.about_banner p,
+.about_description p,
+.about_description li {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
+  font-size: 24px;
+  color: #AAB6D3;
+}
+
+.about_header img {
+  width: 48px;
+}
+
+.about_social {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+}
+
+.about_social a {
+  width: 48px;
+  height: 48px;
+  opacity: .3;
+  margin-left: 8px;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+.about_social a:hover {
+  opacity: 1;
+}
+
+.about_social img {
+  width: 32px;
+}
+
+.about_banner p {
+  margin-bottom: 64px;
+}
+
+
+.about_header, .about_banner {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: space-between;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+.about_banner {
+  margin-bottom: 24px;
+}
+
+.about_banner  img,
+.about_banner  div {
+  width: 100%;
+}
+
+.about_banner  img {
+  max-width: 240px;
+  margin-left: 32px;
+}
+
+.about_container .numpad_action_key {
+  text-decoration: none;
+  margin: 0;
+}
+
+.about_description {
+  display: grid;
+  grid-row-gap: 16px;
+  justify-content: flex-start;
+}
+
+.about_description ul {
+  margin-left: 32px;
+}
+
+.about_description h2 {
+  font-family: 'Nunito', sans-serif;
+  margin-top: 32px;
+  f
+}
+
+.about_description p,
+.about_description li  {
+  font-size: 18px;
+}
+
+.about_container footer{
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+/* Responsive */
+
 @media (max-width: 600px) {
   body {align-items: stretch;}
   .level_container, .dialog_window  {grid-row-gap: 0px; padding: 16px;}
+
+  .about_container {grid-row-gap: 48px;}
+
+  .about_banner img {display: none;}
+  .about_banner h1 {font-size: 40px; text-align: center;}
+  .about_banner p {font-size: 20px; text-align: center; margin-bottom: 32px;}
+  .about_banner div {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: center;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-align-items: center;
+    align-items: center;
+  }
 }
 
 @media (max-width: 375px) {
