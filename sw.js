@@ -5,7 +5,7 @@ self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(cacheName).then((cache) => cache.addAll([
                 'index.html',
-                'about/index.html'.
+                'about/index.html',
                 'style.css',
                 'main.js',
                 'sw.js',
