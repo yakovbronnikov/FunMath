@@ -321,3 +321,4 @@ function addReaction(emoji){
 // Call basic functions
 
 dialogAction('start')
+pauseState()
