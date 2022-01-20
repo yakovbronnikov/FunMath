@@ -431,7 +431,7 @@ footer {
 }
 
 .about_social img {
-  width: 32px;
+  width: 28px;
 }
 
 .about_banner p {
@@ -506,7 +506,7 @@ footer {
   body {align-items: stretch;}
   .level_container, .dialog_window  {grid-row-gap: 0px; padding: 16px;}
 
-  .about_container {grid-row-gap: 48px;}
+  .about_container {grid-row-gap: 48px; padding: 16px;}
 
   .about_banner img {display: none;}
   .about_banner h1 {font-size: 40px; text-align: center;}
@@ -531,6 +531,7 @@ footer {
   .task_form span, #task {font-size: 28px;}
   #solution {font-size: 32px;}
   #time_count {font-size: 18px;}
+  .about_container {grid-row-gap: 48px; padding: 8px;}
 }
 
 @media (max-height: 414px) {
