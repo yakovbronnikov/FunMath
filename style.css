@@ -424,6 +424,9 @@ footer {
   justify-content: center;
   -ms-align-items: center;
   align-items: center;
+  -webkit-transition: opacity .15s ease-in-out;
+  -o-transition: opacity .15s ease-in-out;
+  transition: opacity .15s ease-in-out;
 }
 
 .about_social a:hover {
