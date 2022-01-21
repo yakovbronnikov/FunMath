@@ -226,7 +226,7 @@ function levelMath(x, y , z , operator, operator2) {
     task = x + operator + y + operator2 + z
   }
   let result = eval(task)
-  document.getElementById('task').value = task
+  document.getElementById('task').innerText = task
   return result
 }
 

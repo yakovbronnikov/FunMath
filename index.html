@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="Description" content="This game is designed to practice mental counting. Randomly generated mathematical expressions that you need to calculate and write down the answer.">
+  <meta name="theme-color" content="#2E3675">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>FunMath — a game for upgrade brains!</title>
   <link rel="stylesheet" href="style.css">
@@ -24,7 +25,7 @@
       <button class="emoji_button" onclick="pauseState()">⏸</button>
     </div>
     <div class="task_form">
-      <input type="text" id="task" readonly>
+      <div id="task"></div>
       <label for="solution">=</label>
       <input type="text" id="solution" placeholder="How much?" readonly>
     </div>
@@ -69,15 +70,15 @@
         </div>
         <div class="levels">
           <button class="numpad_key" onclick='continueGame(); levelChoice(0, 1); taskRandom(); restartGame(); dialogAction("pause");'>
-            <h3>Easy 🐥</h3>
+            <div>Easy 🐥</div>
             <p>Sum & Subtract</p>
           </button>
           <button class="numpad_key" onclick='continueGame(); levelChoice(0, 3); taskRandom(); restartGame(); dialogAction("pause");'>
-            <h3>Medium 😎</h3>
+            <div>Medium 😎</div>
             <p>Multiply & Division</p>
           </button>
           <button class="numpad_key" onclick='continueGame(); levelChoice(4, 4); taskRandom(); restartGame(); dialogAction("pause");'>
-            <h3>Hard 🔥</h3>
+            <div>Hard 🔥</div>
             <p>Complex problems</p>
           </button>
         </div>
@@ -87,15 +88,15 @@
         <p id="welcome">This is a FunMath game. Here you need to solve mathematical problems in your mind! To get started, choose your difficulty level:</p>
         <div class="levels">
           <button class="numpad_key" onclick='continueGame(); levelChoice(0, 1); taskRandom(); dialogAction("pause")'>
-            <h3>Easy 🐥</h3>
+            <div>Easy 🐥</div>
             <p>Sum & Subtract</p>
           </button>
           <button class="numpad_key" onclick='continueGame(); levelChoice(0, 3); taskRandom(); dialogAction("pause")'>
-            <h3>Medium 😎</h3>
+            <div>Medium 😎</div>
             <p>Added Multiply & Division</p>
           </button>
           <button class="numpad_key" onclick='continueGame(); levelChoice(4, 4); taskRandom(); dialogAction("pause")'>
-            <h3>Hard 🔥</h3>
+            <div>Hard 🔥</div>
             <p>Complex problems</p>
           </button>
         </div>
