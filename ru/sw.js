@@ -1,4 +1,4 @@
-const cacheName = 'funmath-v1';
+const cacheName = 'funmath-ru-v1';
 const timeout = 400;
 
 self.addEventListener('install', (event) => {
@@ -12,10 +12,10 @@ self.addEventListener('install', (event) => {
                 '../audio/dialog_audio.mp3',
                 '../audio/clear_audio.mp3',
                 '../audio/error_audio.mp3',
-                '../audio/numpad_audio_1.mp3',
-                '../audio/numpad_audio_2.mp3',
-                '../audio/numpad_audio_3.mp3',
-                '../audio/numpad_audio_4.mp3',
+                'audio/numpad_audio_1.mp3',
+                'audio/numpad_audio_2.mp3',
+                'audio/numpad_audio_3.mp3',
+                'audio/numpad_audio_4.mp3',
                 '../audio/success_audio.mp3',
                 '../audio/end_audio.mp3',
                 '../audio/level_main.mp3'
