@@ -176,7 +176,7 @@ footer a:hover {
   width: 100%;
 }
 
-.task_form span, #task {
+.task_form label, #task {
   font-size: 32px;
   font-weight: 400;
   text-align: center;
@@ -184,7 +184,7 @@ footer a:hover {
   background: none;
 }
 
-.task_form span {
+.task_form label {
   color: #fff;
   opacity: .5;
 }
@@ -530,7 +530,7 @@ footer {
   .numpad {height: 100%;}
   .numpad_key {height: 100%; min-height: 48px}
   .task_form {align-self: auto;}
-  .task_form span, #task {font-size: 28px;}
+  .task_form label, #task {font-size: 28px;}
   #solution {font-size: 32px;}
   #time_count {font-size: 18px;}
   .about_container {grid-row-gap: 48px; padding: 8px;}
@@ -558,7 +558,7 @@ footer {
   .numpad_key {height: 100%; min-height: 48px}
   .task_form {align-self: auto;}
   .dialog_window {grid-row-gap: 0px; padding: 16px; }
-  .task_form span, #task {font-size: 28px;}
+  .task_form label, #task {font-size: 28px;}
   #solution {font-size: 32px;}
   #time_count {font-size: 18px;}
 }
