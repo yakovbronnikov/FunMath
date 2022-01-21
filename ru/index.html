@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Description" content="Игра поможет вам прокачать навык счета в уме. Приложение генерирует случайные математические выражение, которые вам нужно решить и записать ответ.">
+  <meta name="theme-color" content="#2E3675">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Веселая математика — игра для прокачки мозгов!</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <link rel="manifest" href="../funmath.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon-16x16.png">
+</head>
+<body>
+  <input type="checkbox" id="game_dialog" checked>
+  <div class="level_container" id="level_container">
+    <div class="level_header">
+      <div class="emoji_button">
+        <span>⏱</span>
+        <time id="time_count">60</time>
+      </div>
+      <button class="emoji_button" onclick="pauseState()">⏸</button>
+    </div>
+    <div class="task_form">
+      <div id="task"></div>
+      <label for="solution">=</label>
+      <input type="text" id="solution" placeholder="Сколько будет?" readonly>
+    </div>
+    <div class="numpad">
+      <button class="numpad_key" onclick='numpadKeyClick(1)'>1</button>
+      <button class="numpad_key" onclick='numpadKeyClick(2)'>2</button>
+      <button class="numpad_key" onclick='numpadKeyClick(3)'>3</button>
+      <button class="numpad_key" onclick='numpadKeyClick(4)'>4</button>
+      <button class="numpad_key" onclick='numpadKeyClick(5)'>5</button>
+      <button class="numpad_key" onclick='numpadKeyClick(6)'>6</button>
+      <button class="numpad_key" onclick='numpadKeyClick(7)'>7</button>
+      <button class="numpad_key" onclick='numpadKeyClick(8)'>8</button>
+      <button class="numpad_key" onclick='numpadKeyClick(9)'>9</button>
+      <button class="numpad_key numpad_action_key" onclick='numpadKeyClick(10)'>C</button>
+      <button class="numpad_key" onclick='numpadKeyClick(0)'>0</button>
+      <button class="numpad_key numpad_action_key" onclick='resultCheck()'>=</button>
+    </div>
+  </div>
+
+  <div class="dialog_backdrop">
+    <div class="dialog_window">
+      <div class="dialog_content" id="dialog_pause">
+        <h1>Игра на паузе...</h1>
+        <div class="dialog_button_group">
+          <button onclick="continueGame()" id="continue_button" class="numpad_action_key">Продолжить</button>
+          <button onclick="restartGame()" id="restart_button" class="numpad_key">Заново</button>
+        </div>
+      </div>
+      <div class="dialog_content" id="dialog_end">
+        <h1>Время вышло!</h1>
+        <div class="user_rating">
+          <h1 id="rating"></h1>
+          <div class="score_content">
+            <span id='score_count'>0</span>
+            <span>из</span>
+            <span id='task_count'>0</span>
+          </div>
+          <div>
+            <span>Рекорд:</span>
+            <span id="user_record"></span>
+          </div>
+        </div>
+        <div class="levels">
+          <button class="numpad_key" onclick='continueGame(); levelChoice(0, 1); taskRandom(); restartGame(); dialogAction("pause");'>
+            <div>Легкий 🐥</div>
+            <p>Сложение и вычитание</p>
+          </button>
+          <button class="numpad_key" onclick='continueGame(); levelChoice(0, 3); taskRandom(); restartGame(); dialogAction("pause");'>
+            <div>Продвинутый 😎</div>
+            <p>Добавлено умножение и деление</p>
+          </button>
+          <button class="numpad_key" onclick='continueGame(); levelChoice(4, 4); taskRandom(); restartGame(); dialogAction("pause");'>
+            <div>Cложный 🔥</div>
+            <p>Несколько чисел</p>
+          </button>
+        </div>
+      </div>
+      <div class="dialog_content" id="dialog_start">
+        <h1>Привет!</h1>
+        <p id="welcome">Это игра Веселая математика. Тут нужно решать математические задачки в уме! Для начала, выберите уровень сложности:</p>
+        <div class="levels">
+          <button class="numpad_key" onclick='continueGame(); levelChoice(0, 1); taskRandom(); dialogAction("pause")'>
+            <div>Легкий 🐥</div>
+            <p>Сложение и вычитание</p>
+          </button>
+          <button class="numpad_key" onclick='continueGame(); levelChoice(0, 3); taskRandom(); dialogAction("pause")'>
+            <div>Продвинутый 😎</div>
+            <p>Добавлено умножение и деление</p>
+          </button>
+          <button class="numpad_key" onclick='continueGame(); levelChoice(4, 4); taskRandom(); dialogAction("pause")'>
+            <div>Cложный 🔥</div>
+            <p>Примеры с тремя числами</p>
+          </button>
+        </div>
+      </div>
+      <footer>
+        <a href="https://github.com/yakovbronnikov/FunMath" target="_blank" rel="noopener">2022 &#169; Веселая математика</a>
+        <a href="../about/ru/" rel="noopener">О игре</a>
+      </footer>
+    </div>
+  </div>
+
+
+  <div class="reactions_block">
+    <div class="reaction"></div>
+    <div class="reaction"></div>
+    <div class="reaction"></div>
+    <div class="reaction"></div>
+    <div class="reaction"></div>
+    <div class="reaction"></div>
+    <div class="reaction"></div>
+    <div class="reaction"></div>
+    <div class="reaction"></div>
+    <div class="reaction"></div>
+  </div>
+
+  <audio src="audio/level_main.mp3" id="level_main" preload="auto"></audio>
+  <audio src="audio/dialog_audio.mp3" id="dialog_audio" preload="auto"></audio>
+  <audio src="audio/clear_audio.mp3" id="clear_audio" preload="auto"></audio>
+  <audio src="audio/error_audio.mp3" id="error_audio" preload="auto"></audio>
+  <audio src="audio/success_audio.mp3" id="success_audio" preload="auto"></audio>
+  <audio src="audio/end_audio.mp3" id="end_audio" preload="auto"></audio>
+  <audio id="numpad_audio" preload="auto"></audio>
+
+  <script type="text/javascript" src="../main.js"></script>
+</body>
+</html>
