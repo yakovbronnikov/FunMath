@@ -493,7 +493,7 @@ footer {
 }
 
 .about_container footer{
-  justify-content: center;
+  justify-content: space-between;
 }
 
 
