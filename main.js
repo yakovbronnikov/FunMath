@@ -20,6 +20,8 @@ function audioActions(audio, action){
   }
 }
 
+window.localStorage.setItem('userRecordStorage', 1);
+
 let pause = document.getElementById('game_dialog')
 let levelTime = document.getElementById('time_count')
 let myResult = 0
@@ -54,7 +56,7 @@ function levelChoice(from, to) {
 }
 
 function storageRecordCheck() {
-  if(Number(window.localStorage.getItem('userRecordStorage')) == 0){
+  if(window.localStorage.getItem('userRecordStorage') == 0){
     return userRecord.innerText
   } else {
     userRecord.innerText = window.localStorage.getItem('userRecordStorage')
