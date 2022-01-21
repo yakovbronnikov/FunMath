@@ -113,7 +113,7 @@ let myTimer = setInterval(
       }
     }
   },
-  1000
+  100
 )
 
 window.addEventListener('blur', function(){
