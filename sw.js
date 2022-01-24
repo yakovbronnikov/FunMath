@@ -9,16 +9,16 @@ self.addEventListener('install', (event) => {
                 'style.css',
                 'main.js',
                 'sw.js',
-                'audio/dialog_audio.mp3',
-                'audio/clear_audio.mp3',
-                'audio/error_audio.mp3',
-                'audio/numpad_audio_1.mp3',
-                'audio/numpad_audio_2.mp3',
-                'audio/numpad_audio_3.mp3',
-                'audio/numpad_audio_4.mp3',
-                'audio/success_audio.mp3',
-                'audio/end_audio.mp3',
-                'audio/level_main.mp3'
+                'audio/dialog_audio.ogg',
+                'audio/clear_audio.ogg',
+                'audio/error_audio.ogg',
+                'audio/numpad_audio_1.ogg',
+                'audio/numpad_audio_2.ogg',
+                'audio/numpad_audio_3.ogg',
+                'audio/numpad_audio_4.ogg',
+                'audio/success_audio.ogg',
+                'audio/end_audio.ogg',
+                'audio/level_main.ogg'
             ])
         ));
 });

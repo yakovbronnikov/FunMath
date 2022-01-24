@@ -108,10 +108,10 @@ let myTimer = setInterval(
       levelTime.innerText = timeValue - 1
     } else {
       if(timeValue == 0 && pause.checked == false){
-        recordCheck()
         audioActions(endAudio, 'play')
         dialogAction('end')
         pauseState()
+        recordCheck()
       }
     }
   },
@@ -178,7 +178,7 @@ function numpadKeyUp(event) {this.classList.remove('numpad_key_pressed')}
 function numpadKeyClick(number){
   let input = document.getElementById('solution')
   if (number != 10){
-    numpadAudio.src = "audio/numpad_audio_"+randomNumber(1, 4)+".mp3"
+    numpadAudio.src = "audio/numpad_audio_"+randomNumber(1, 4)+".ogg"
     audioActions(numpadAudio, 'play')
     input.value += String(number)
   } else {
