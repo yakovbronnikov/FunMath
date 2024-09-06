@@ -30,7 +30,6 @@ let taskCount = document.getElementById('task_count')
 let dialogTime = document.getElementById('dialog_time')
 let userRecord = document.getElementById('user_record')
 
-let mainAudio = document.getElementById('level_main')
 let dialogAudio = document.getElementById('dialog_audio')
 let numpadAudio = document.getElementById('numpad_audio')
 let clearAudio = document.getElementById('clear_audio')
@@ -41,7 +40,7 @@ let endAudio = document.getElementById('end_audio')
 let levelFrom = 0
 let levelTo = 0
 
-mainAudio.volume = .1
+
 dialogAudio.volume = .2
 numpadAudio.volume = .2
 clearAudio.volume = .2
@@ -96,7 +95,6 @@ function pauseState() {
   if(pause.checked != true) {
     audioActions(dialogAudio, 'play')
     pause.checked = true
-    audioActions(mainAudio, 'pause')
   }
 }
 
@@ -127,7 +125,6 @@ window.addEventListener('blur', function(){
 function continueGame(){
   audioActions(dialogAudio, 'play')
   pause.checked = false
-  audioActions(mainAudio, 'play')
 }
 
 function restartGame(){
@@ -137,7 +134,6 @@ function restartGame(){
   document.getElementById('time_count').innerText = 60
   scoreCount.innerText = 0
   taskCount.innerText = 0
-  audioActions(mainAudio, 'load')
 }
 
 
