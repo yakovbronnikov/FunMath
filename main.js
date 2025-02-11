@@ -1,10 +1,13 @@
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js')
+// SW
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js')
     .then(() => navigator.serviceWorker.ready.then((worker) => {
       worker.sync.register('syncdata');
     }))
     .catch((err) => console.log(err));
-};
+}
+
 
 
 // Audio settings
@@ -29,6 +32,8 @@ let scoreCount = document.getElementById('score_count')
 let taskCount = document.getElementById('task_count')
 let dialogTime = document.getElementById('dialog_time')
 let userRecord = document.getElementById('user_record')
+
+
 
 let dialogAudio = document.getElementById('dialog_audio')
 let numpadAudio = document.getElementById('numpad_audio')
@@ -174,7 +179,7 @@ function numpadKeyUp(event) {this.classList.remove('numpad_key_pressed')}
 function numpadKeyClick(number){
   let input = document.getElementById('solution')
   if (number != 10){
-    numpadAudio.src = "audio/numpad_audio_"+randomNumber(1, 4)+".ogg"
+    numpadAudio.src = "../audio/numpad_audio_"+randomNumber(1, 4)+".ogg"
     audioActions(numpadAudio, 'play')
     input.value += String(number)
   } else {
